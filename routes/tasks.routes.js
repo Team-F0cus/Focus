@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const Task = require("../models/Task.model.js");
+const Task = require("./models/Task.model.js");
 const User = require("../models/User.model.js");
 const isLoggedIn = require("../middleware/isLoggedIn.js");
 
