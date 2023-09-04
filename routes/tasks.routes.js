@@ -52,4 +52,11 @@ router.post("/create", isLoggedIn, (req, res, next) => {
     });
 });
 
+router.post('/task/:taskId/delete', isLoggedIn,(req, res, next) => {
+  const { taskId } = req.params;
+ 
+  Task.findByIdAndDelete(taskId)
+    .then(() => res.redirect('/'))
+    .catch(error => next(error));
+});
 module.exports = router;
