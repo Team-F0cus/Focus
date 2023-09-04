@@ -3,12 +3,11 @@
 {{#each task}}
   <div>
     <h2>{{this.title}}</h3>
-    <a href="/details/{{this._id}}">View details</a>
-    <p>Responsible: {{this.responsible}}</p>
+    <a href="task/details/{{this._id}}">View details</a>
+    <p>Responsible: {{this.responsible.username}}</p>
     <p>Category: {{this.category}}</p>
     <p>Priority: {{this.priority}}</p>
-  {{!-- add the form to handle the POST request to remove a specific book  --}}
-    <a href="/edit/{{this._id}}">Edit</a>
-    <a href="/delete/{{this._id}}">Delete</a>
+    <a href="task/edit/{{this._id}}">Edit</a>
+    <a href="task/delete/{{this._id}}">Delete</a>
   </div>
 {{/each}}

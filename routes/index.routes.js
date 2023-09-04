@@ -8,18 +8,15 @@ const isLoggedIn = require("../middleware/isLoggedIn.js");
 /* GET home page */
 router.get("/", (req, res, next) => {
   Task.find()
-  .then((allTasksFromDB) => {
-    res.render("index", {task: allTasksFromDB})
-  })
-  .catch((error) => {
+    .populate("responsible")
+    .then((allTasksFromDB) => {
+      res.render("index", { task: allTasksFromDB });
+    })
+    .catch((error) => {
       console.log("Error while getting the Tasks from the DB: ", error);
 
       next(error);
     });
 });
-
-
-
-
 
 module.exports = router;
