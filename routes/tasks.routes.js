@@ -68,12 +68,12 @@ router.get("/edit/:taskId", isLoggedIn, async (req, res, next) => {
 });
 
 // POST TO DELETE TASK
-router.post('/delete/:taskId', isLoggedIn,(req, res, next) => {
+router.post("/delete/:taskId", isLoggedIn, (req, res, next) => {
   const { taskId } = req.params;
-  
+
   Task.findByIdAndDelete(taskId)
-    .then(() => res.redirect('/'))
-    .catch(error => next(error));
+    .then(() => res.redirect("/"))
+    .catch((error) => next(error));
 });
 
 module.exports = router;
