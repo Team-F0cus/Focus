@@ -5,8 +5,22 @@ const Task = require("../models/Task.model.js");
 const User = require("../models/User.model.js");
 const isLoggedIn = require("../middleware/isLoggedIn.js");
 
-/* GET create task */
+// GET DETAILLED VIEW
+router.get("/details/:taskId", (req, res, next) => {
+  const { taskId } = req.params;
 
+  Task.findById(taskId)
+    .populate("responsible")
+    .then((theTask) => res.render("task/task-details.hbs", { task: theTask }))
+    .catch((error) => {
+      console.log("Error while retrieving the task details: ", error);
+
+      // Call the error-middleware to display the error page to the user
+      next(error);
+    });
+});
+
+// GET CREATE A TASK
 router.get("/create", isLoggedIn, (req, res, next) => {
   User.find()
     .then((usersFromDB) => {
@@ -21,6 +35,7 @@ router.get("/create", isLoggedIn, (req, res, next) => {
     });
 });
 
+// POST CREATE A TASK
 router.post("/create", isLoggedIn, (req, res, next) => {
   const { title, state, responsible, priority, category, description } =
     req.body;

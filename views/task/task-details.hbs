@@ -1,0 +1,9 @@
+<a href="/">Back</a>
+<h1>{{task.title}}</h1>
+<h2>Responsible: {{task.responsible.username}}</h2>
+<p>Description: {{task.description}}</p>
+<p>Priority: {{task.priority}}</p>
+<p>Category: {{task.category}}</p>
+<hr />
+<a href="/edit/{{task._id}}">Edit</a>
+<a href="/delete/{{task._id}}">Delete</a>
