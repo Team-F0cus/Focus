@@ -8,6 +8,10 @@
     <p>Category: {{this.category}}</p>
     <p>Priority: {{this.priority}}</p>
     <a href="task/edit/{{this._id}}">Edit</a>
-    <a href="task/delete/{{this._id}}">Delete</a>
+    <form action="task/delete/{{this._id}}" method="POST">
+    <button>Delete</button>
+    </form>
+    
+    
   </div>
 {{/each}}
