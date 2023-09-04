@@ -12,7 +12,6 @@
       <option value="Todo">Todo</option>
       <option value="In Progress">In Progress</option>
       <option value="Done">Done</option>
-
     </select>
   </label>
 
@@ -45,7 +44,12 @@
 
   <label>
     Description:
-    <textarea name="description" cols="30" rows="2"> </textarea>
+    <textarea
+      name="description"
+      cols="30"
+      rows="2"
+      value="{{task.description}}"
+    >{{task.description}}</textarea>
   </label>
 
   <button>Save changes</button>
