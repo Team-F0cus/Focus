@@ -14,8 +14,6 @@ router.get("/details/:taskId", (req, res, next) => {
     .then((theTask) => res.render("task/task-details.hbs", { task: theTask }))
     .catch((error) => {
       console.log("Error while retrieving the task details: ", error);
-
-      // Call the error-middleware to display the error page to the user
       next(error);
     });
 });
@@ -40,8 +38,6 @@ router.post("/create", isLoggedIn, (req, res, next) => {
   const { title, state, responsible, priority, category, description } =
     req.body;
 
-  console.log(req.body);
-
   Task.create({ title, state, responsible, priority, category, description })
     .then(() => {
       res.redirect("/");
@@ -59,4 +55,23 @@ router.post('/task/:taskId/delete', isLoggedIn,(req, res, next) => {
     .then(() => res.redirect('/'))
     .catch(error => next(error));
 });
+// GET TASK UPDATE
+router.get("/edit/:taskId", isLoggedIn, async (req, res, next) => {
+  const { taskId } = req.params;
+
+  try {
+    const taskDetails = await Task.findById(taskId);
+    const responsible = await User.find();
+
+    const data = {
+      task: taskDetails,
+      responsible: responsible,
+    };
+
+    res.render("task/task-edit.hbs", data);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;

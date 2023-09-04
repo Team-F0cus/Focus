@@ -1,0 +1,53 @@
+<h1>Edit the task: {{task.title}} </h1>
+
+<form action="task/edit/{{task._id}}" method="post">
+  <label>
+    Title of the task:
+    <input type="text" name="title" value="{{task.title}}" />
+  </label>
+
+  <label>
+    Initial state:
+    <select name="state">
+      <option value="Todo">Todo</option>
+      <option value="In Progress">In Progress</option>
+      <option value="Done">Done</option>
+
+    </select>
+  </label>
+
+  <label>
+    Responsible:
+    <select name="responsible">
+      {{#each users}}
+        <option value={{this._id}}>{{this.username}}</option>
+      {{/each}}
+    </select>
+  </label>
+
+  <label>
+    Category:
+    <select name="category">
+      <option value="Bug">Bug</option>
+      <option value="Improvement">Improvement</option>
+      <option value="Feature">Feature</option>
+    </select>
+  </label>
+
+  <label>
+    Priority:
+    <select name="priority">
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+    </select>
+  </label>
+
+  <label>
+    Description:
+    <textarea name="description" cols="30" rows="2"> </textarea>
+  </label>
+
+  <button>Save changes</button>
+
+</form>
