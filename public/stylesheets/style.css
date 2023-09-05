@@ -1,6 +1,5 @@
-
 body {
-  padding: 50px;
+  padding: 0px 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -10,4 +9,16 @@ a {
 
 h1 {
   color: 15px;
+}
+
+.Low {
+  border-color: rgb(196, 229, 196);
+}
+
+.Medium {
+  border-color: rgb(243, 231, 194);
+}
+
+.High {
+  border-color: rgb(255, 194, 194);
 }

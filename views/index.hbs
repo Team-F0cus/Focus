@@ -1,49 +1,119 @@
 <h1>Tasks</h1>
 
-<section id="todo">
-  {{#each todoTasks}}
-    <div>
-      <h2>{{title}}</h2>
-      <a href="task/details/{{_id}}">View details</a>
-      <p>Responsible: {{responsible.username}}</p>
-      <p>Category: {{category}}</p>
-      <p>Priority: {{priority}}</p>
-      <a href="task/edit/{{_id}}">Edit</a>
-      <form action="task/delete/{{_id}}" method="POST">
-        <button>Delete</button>
-      </form>
-    </div>
-  {{/each}}
-</section>
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10 px-10">
 
-<section id="in-progress">
-  {{#each inProgressTasks}}
-    <div>
-      <h2>{{title}}</h2>
-      <a href="task/details/{{_id}}">View details</a>
-      <p>Responsible: {{responsible.username}}</p>
-      <p>Category: {{category}}</p>
-      <p>Priority: {{priority}}</p>
-      <a href="task/edit/{{_id}}">Edit</a>
-      <form action="task/delete/{{_id}}" method="POST">
-        <button>Delete</button>
-      </form>
-    </div>
-  {{/each}}
-</section>
+  <section class="flex justify-baseline items-center flex-col px-10">
+    <h2
+      class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center"
+    >Todo</h2>
+    {{#each todoTasks}}
+      <div
+        class="p-6 bg-white border-2 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-full my-5
+          {{priority}}"
+      >
+        <h3
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >{{title}}</h3>
+        <a
+          href="task/details/{{_id}}"
+          class="mb-3 font-normal text-gray-700 dark:text-gray-400 underline"
+        >View details</a>
+        <p
+          class="mb-3 font-normal text-gray-700 dark:text-gray-400"
+        >Responsible: {{responsible.username}}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Category:
+          {{category}}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Priority:
+          {{priority}}</p>
+        <a
+          href="task/edit/{{_id}}"
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-sky-700 rounded-lg hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >Edit</a>
+        <form
+          action="task/delete/{{_id}}"
+          method="POST"
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-slate-500 rounded-lg hover:bg-slate-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          <button>Delete</button>
+        </form>
+      </div>
+    {{/each}}
+  </section>
 
-<section id="done">
-  {{#each doneTasks}}
-    <div>
-      <h2>{{title}}</h2>
-      <a href="task/details/{{_id}}">View details</a>
-      <p>Responsible: {{responsible.username}}</p>
-      <p>Category: {{category}}</p>
-      <p>Priority: {{priority}}</p>
-      <a href="task/edit/{{_id}}">Edit</a>
-      <form action="task/delete/{{_id}}" method="POST">
-        <button>Delete</button>
-      </form>
-    </div>
-  {{/each}}
+  <section class="flex justify-baseline items-center flex-col px-10">
+    <h2
+      class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center"
+    >In Progress</h2>
+    {{#each inProgressTasks}}
+      <div
+        class="p-6 bg-white border-2 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-full my-5
+          {{priority}}"
+      >
+        <h3
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >{{title}}</h3>
+        <a
+          href="task/details/{{_id}}"
+          class="mb-3 font-normal text-gray-700 dark:text-gray-400 underline"
+        >View details</a>
+        <p
+          class="mb-3 font-normal text-gray-700 dark:text-gray-400"
+        >Responsible: {{responsible.username}}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Category:
+          {{category}}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Priority:
+          {{priority}}</p>
+        <a
+          href="task/edit/{{_id}}"
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-sky-700 rounded-lg hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >Edit</a>
+        <form
+          action="task/delete/{{_id}}"
+          method="POST"
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-slate-500 rounded-lg hover:bg-slate-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          <button>Delete</button>
+        </form>
+      </div>
+    {{/each}}
+  </section>
+
+  <section id="todo" class="flex justify-baseline items-center flex-col px-10">
+    <h2
+      class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center"
+    >Done</h2>
+    {{#each doneTasks}}
+      <div
+        class="p-6 bg-white border-2 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-full my-5
+          {{priority}}"
+      >
+        <h3
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >{{title}}</h3>
+        <a
+          href="task/details/{{_id}}"
+          class="mb-3 font-normal text-gray-700 dark:text-gray-400 underline"
+        >View details</a>
+        <p
+          class="mb-3 font-normal text-gray-700 dark:text-gray-400"
+        >Responsible: {{responsible.username}}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Category:
+          {{category}}</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Priority:
+          {{priority}}</p>
+        <a
+          href="task/edit/{{_id}}"
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-sky-700 rounded-lg hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >Edit</a>
+        <form
+          action="task/delete/{{_id}}"
+          method="POST"
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-slate-500 rounded-lg hover:bg-slate-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          <button>Delete</button>
+        </form>
+      </div>
+    {{/each}}
+  </section>
+
 </section>
