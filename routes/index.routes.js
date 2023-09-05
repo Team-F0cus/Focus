@@ -5,7 +5,35 @@ const Task = require("../models/Task.model.js");
 const User = require("../models/User.model.js");
 const isLoggedIn = require("../middleware/isLoggedIn.js");
 
-/* GET home page */
+// GET home page
+router.get("/", async (req, res, next) => {
+  try {
+    const todoTasks = await Task.find({ state: "Todo" }).populate(
+      "responsible"
+    );
+    const inProgressTasks = await Task.find({ state: "In Progress" }).populate(
+      "responsible"
+    );
+    const doneTasks = await Task.find({ state: "Done" }).populate(
+      "responsible"
+    );
+
+    const data = {
+      todoTasks: todoTasks,
+      inProgressTasks: inProgressTasks,
+      doneTasks: doneTasks,
+    };
+
+    console.log(data.doneTasks);
+
+    res.render("index", data);
+  } catch (error) {
+    console.log("Error while getting the Tasks from the DB: ", error);
+    next(error);
+  }
+});
+
+/*// GET home page
 router.get("/", (req, res, next) => {
   Task.find()
     .populate("responsible")
@@ -17,6 +45,6 @@ router.get("/", (req, res, next) => {
 
       next(error);
     });
-});
+});*/
 
 module.exports = router;
