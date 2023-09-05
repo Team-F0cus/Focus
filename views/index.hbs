@@ -1,17 +1,49 @@
 <h1>Tasks</h1>
- 
-{{#each task}}
-  <div>
-    <h2>{{this.title}}</h3>
-    <a href="task/details/{{this._id}}">View details</a>
-    <p>Responsible: {{this.responsible.username}}</p>
-    <p>Category: {{this.category}}</p>
-    <p>Priority: {{this.priority}}</p>
-    <a href="task/edit/{{this._id}}">Edit</a>
-    <form action="task/delete/{{this._id}}" method="POST">
-    <button>Delete</button>
-    </form>
-    
-    
-  </div>
-{{/each}}
+
+<section id="todo">
+  {{#each todoTasks}}
+    <div>
+      <h2>{{title}}</h2>
+      <a href="task/details/{{_id}}">View details</a>
+      <p>Responsible: {{responsible.username}}</p>
+      <p>Category: {{category}}</p>
+      <p>Priority: {{priority}}</p>
+      <a href="task/edit/{{_id}}">Edit</a>
+      <form action="task/delete/{{_id}}" method="POST">
+        <button>Delete</button>
+      </form>
+    </div>
+  {{/each}}
+</section>
+
+<section id="in-progress">
+  {{#each inProgressTasks}}
+    <div>
+      <h2>{{title}}</h2>
+      <a href="task/details/{{_id}}">View details</a>
+      <p>Responsible: {{responsible.username}}</p>
+      <p>Category: {{category}}</p>
+      <p>Priority: {{priority}}</p>
+      <a href="task/edit/{{_id}}">Edit</a>
+      <form action="task/delete/{{_id}}" method="POST">
+        <button>Delete</button>
+      </form>
+    </div>
+  {{/each}}
+</section>
+
+<section id="done">
+  {{#each doneTasks}}
+    <div>
+      <h2>{{title}}</h2>
+      <a href="task/details/{{_id}}">View details</a>
+      <p>Responsible: {{responsible.username}}</p>
+      <p>Category: {{category}}</p>
+      <p>Priority: {{priority}}</p>
+      <a href="task/edit/{{_id}}">Edit</a>
+      <form action="task/delete/{{_id}}" method="POST">
+        <button>Delete</button>
+      </form>
+    </div>
+  {{/each}}
+</section>

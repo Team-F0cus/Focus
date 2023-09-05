@@ -9,7 +9,7 @@
   <label>
     Initial state:
     <select name="state">
-
+      <option value="Todo">Select</option>
       <option value="Todo">Todo</option>
       <option value="In Progress">In Progress</option>
       <option value="Done">Done</option>
@@ -19,7 +19,8 @@
   <label>
     Responsible:
     <select name="responsible">
-      {{#each users}}
+      <option value="Anonymous">Select</option>
+      {{#each responsible}}
         <option value={{this._id}}>{{this.username}}</option>
       {{/each}}
     </select>
@@ -28,6 +29,7 @@
   <label>
     Category:
     <select name="category">
+      <option value="Improvement">Select</option>
       <option value="Bug">Bug</option>
       <option value="Improvement">Improvement</option>
       <option value="Feature">Feature</option>
@@ -37,6 +39,7 @@
   <label>
     Priority:
     <select name="priority">
+      <option value="Medium">Select</option>
       <option value="Low">Low</option>
       <option value="Medium">Medium</option>
       <option value="High">High</option>
