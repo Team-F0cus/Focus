@@ -1,6 +1,6 @@
 <h1>Edit the task: {{task.title}} </h1>
 
-<form action="task/edit/{{task._id}}" method="post">
+<form action="/task/edit/{{task._id}}" method="post">
   <label>
     Title of the task:
     <input type="text" name="title" value="{{task.title}}" />
@@ -9,7 +9,7 @@
   <label>
     Initial state:
     <select name="state">
-        
+
       <option value="Todo">Todo</option>
       <option value="In Progress">In Progress</option>
       <option value="Done">Done</option>

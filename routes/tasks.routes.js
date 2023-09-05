@@ -67,25 +67,6 @@ router.get("/edit/:taskId", isLoggedIn, async (req, res, next) => {
   }
 });
 
-// GET TASK UPDATE
-router.get("/edit/:taskId", isLoggedIn, async (req, res, next) => {
-  const { taskId } = req.params;
-
-  try {
-    const taskDetails = await Task.findById(taskId);
-    const responsible = await User.find();
-
-    const data = {
-      task: taskDetails,
-      responsible: responsible,
-    };
-
-    res.render("task/task-edit.hbs", data);
-  } catch (error) {
-    next(error);
-  }
-});
-
 // POST TASK UPDATE
 router.post("/edit/:taskId", isLoggedIn, (req, res, next) => {
   const { taskId } = req.params;
