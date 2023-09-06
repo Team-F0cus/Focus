@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{{appTitle}}</title>
+    <title>Foc/us.</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="shortcut icon" href="/images/focus.png" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = { theme: { extend: { colors: { clifford: '#da373d', } }
@@ -14,9 +15,9 @@
 
   </head>
 
-  <body class="bg-gray-50">
+  <body class="bg-gray-50 relative pb-20">
     <nav
-      class="flex items-center justify-between flex-wrap bg-emerald-800 p-6 md:px-20"
+      class="flex items-center justify-center lg:justify-between flex-wrap bg-emerald-800 p-6 md:px-20"
     >
       <div class="flex items-center flex-shrink-0 text-white mr-6">
         <img
@@ -30,7 +31,7 @@
       </div>
 
       <div
-        class="w-full block flex-grow flex flex-col lg:flex-row lg:items-center lg:w-auto"
+        class="w-full block flex-grow flex flex-col items-center lg:flex-row lg:items-center lg:w-auto"
       >
         <div class="text-sm lg:flex-grow flex flex-row">
           <a
@@ -61,13 +62,27 @@
         <div>
           <a
             href="/task/create"
-            class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-emerald-800 hover:bg-white mt-4 lg:mt-0"
+            class="inline-block text-sm px-4 py-2 leading-none font-medium border rounded bg-white text-emerald-800 border-transparent hover:border-white hover:text-white hover:bg-transparent mt-4 lg:mt-0"
           >New Task</a>
         </div>
       </div>
     </nav>
 
     {{{body}}}
+
+    <div
+      class="font-light flex flex-col justify-center content-center text-center text-white bg-emerald-900 h-20 absolute bottom-0 w-full"
+    ><p><a
+          href="https://www.linkedin.com/in/pedro-figueiredo-6154b715b/"
+          target="blank"
+          class="underline"
+        >Pedro</a>
+        &
+        <a
+          href="https://www.linkedin.com/in/alexis-parsat-lacoste/"
+          target="blank"
+          class="underline"
+        >Alexis</a><br />JS | MongoBD | Express | Node | Handlebar</p></div>
 
     <script src="/js/script.js"></script>
   </body>
