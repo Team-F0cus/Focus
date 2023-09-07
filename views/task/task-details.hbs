@@ -18,11 +18,11 @@
       <p><span class="font-semibold">Priority : </span>{{task.priority}}</p>
       <p><span class="font-semibold">Category : </span>{{task.category}}</p>
       <a
-        href="task/edit/{{_id}}"
+        href="/task/edit/{{task._id}}"
         class="inline-flex items-center px-3 py-2 mr-1 text-sm font-medium text-center text-white bg-emerald-800 rounded-lg hover:bg-emerald-900 focus:ring-4 focus:outline-none focus:ring-blue-300"
       >Edit</a>
       <form
-        action="task/delete/{{_id}}"
+        action="/task/delete/{{task._id}}"
         method="POST"
         class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-rose-500 rounded-lg hover:bg-rose-600 focus:ring-4 focus:outline-none focus:ring-blue-300"
       >
