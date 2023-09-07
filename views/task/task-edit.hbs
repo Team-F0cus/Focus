@@ -8,11 +8,11 @@
     <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
       <h1
         class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl"
-      >Edit the task: {{task.title}}</h1>
+      >Edit the task : {{task.title}}</h1>
 
       <form action="/task/edit/{{task._id}}" method="post">
         <label>
-          Title of the task:
+          Title of the task :
           <input
             type="text"
             name="title"
@@ -23,58 +23,105 @@
         </label>
 
         <label>
-          Initial state:
-          <select
-            name="state"
-            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-3"
-          >
-            <option value="Todo">Select</option>
-            <option value="Todo">Todo</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Done">Done</option>
-          </select>
+          Actual state :
+          <fieldset>
+            <div class="mt-1 mb-3">
+              {{#each selectedState}}
+                {{#if this.select}}
+                  <input
+                    type="radio"
+                    checked="checked"
+                    id="{{this.state}}"
+                    name="state"
+                    value="{{this.state}}"
+                  />
+                  <label
+                    for="{{this.state}}"
+                    class="mr-2"
+                  >{{this.state}}</label>
+                {{else}}
+                  <input
+                    type="radio"
+                    id="{{this.state}}"
+                    name="state"
+                    value="{{this.state}}"
+                  />
+                  <label
+                    for="{{this.state}}"
+                    class="mr-2"
+                  >{{this.state}}</label>
+                {{/if}}
+              {{/each}}
+            </div>
+          </fieldset>
         </label>
 
         <label>
-          Responsible:
+          Responsible :
           <select
             name="responsible"
             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-3"
           >
-            {{#each responsible}}
-              <option value={{this._id}}>{{this.username}}</option>
+
+            {{#each selectedResp}}
+              {{#if this.select}}
+                <option
+                  value="{{this.responsible._id}}"
+                  selected="true"
+                >{{this.responsible.username}}</option>
+              {{else}}
+                <option
+                  value="{{this.responsible._id}}"
+                >{{this.responsible.username}}</option>
+              {{/if}}
             {{/each}}
+
           </select>
         </label>
 
         <label>
-          Category:
+          Category :
           <select
             name="category"
             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-3"
           >
-            <option value="Improvement"></option>
-            <option value="Bug">Bug</option>
-            <option value="Improvement">Improvement</option>
-            <option value="Feature">Feature</option>
-          </select>
-        </label>
 
-        <label class="sr-only">
-          Priority:
-          <select
-            name="priority"
-            id="underline_select"
-            class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer mb-3"
-          >
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
+            {{#each selectedCategory}}
+              {{#if this.select}}
+                <option
+                  value="{{this.category}}"
+                  selected="true"
+                >{{this.category}}</option>
+              {{else}}
+                <option value="{{this.category}}">{{this.category}}</option>
+              {{/if}}
+            {{/each}}
+
           </select>
         </label>
 
         <label>
-          Description:
+          Priority :
+          <select
+            name="priority"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-3"
+          >
+            {{#each selectedPriority}}
+              {{#if this.select}}
+                <option
+                  value="{{this.priority}}"
+                  selected="true"
+                >{{this.priority}}</option>
+              {{else}}
+                <option value="{{this.priority}}">{{this.priority}}</option>
+              {{/if}}
+            {{/each}}
+
+          </select>
+        </label>
+
+        <label>
+          Description :
           <textarea
             name="description"
             cols="30"

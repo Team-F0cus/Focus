@@ -12,7 +12,7 @@
 
       <form action="/task/create" method="post">
         <label>
-          Title of the task:
+          Title of the task :
           <input
             type="text"
             name="title"
@@ -22,19 +22,34 @@
         </label>
 
         <label>
-          Initial state:
-          <select
-            name="state"
-            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-3"
-          >
-            <option value="Todo">Todo</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Done">Done</option>
-          </select>
+          Actual state :
+          <fieldset>
+            <div class="mt-1 mb-3">
+              <input
+                type="radio"
+                checked="checked"
+                id="Todo"
+                name="state"
+                value="Todo"
+              />
+              <label for="Todo" class="mr-2">Todo</label>
+
+              <input
+                type="radio"
+                id="In Progress"
+                name="state"
+                value="In Progress"
+              />
+              <label for="In Progress" class="mr-2">In Progress</label>
+
+              <input type="radio" id="Done" name="state" value="Done" />
+              <label for="Done" class="mr-2">Done</label>
+            </div>
+          </fieldset>
         </label>
 
         <label>
-          Responsible:
+          Responsible :
           <select
             name="responsible"
             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-3"
@@ -46,7 +61,7 @@
         </label>
 
         <label>
-          Category:
+          Category :
           <select
             name="category"
             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-3"
@@ -57,12 +72,11 @@
           </select>
         </label>
 
-        <label class="sr-only">
-          Priority:
+        <label>
+          Priority :
           <select
             name="priority"
-            id="underline_select"
-            class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer mb-3"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-3"
           >
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
@@ -71,7 +85,7 @@
         </label>
 
         <label>
-          Description:
+          Description :
           <textarea
             name="description"
             cols="30"

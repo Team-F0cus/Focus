@@ -9,7 +9,6 @@ const taskSchema = new Schema({
   state: {
     type: String,
     enum: ["Todo", "In Progress", "Done"],
-    default: "Todo",
   },
   responsible: {
     type: Schema.Types.ObjectId,

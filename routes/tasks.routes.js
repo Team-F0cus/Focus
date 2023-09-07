@@ -11,16 +11,16 @@ router.get("/details/:taskId", (req, res, next) => {
 
   Task.findById(taskId)
     .populate("responsible")
-    .then((theTask)=>{
-      let logged = false 
-      if(req.session.currentUser){
-        logged = true
+    .then((theTask) => {
+      let logged = false;
+      if (req.session.currentUser) {
+        logged = true;
       }
       const data = {
         task: theTask,
-        logged: logged
-      }
-      res.render("task/task-details.hbs",data)
+        logged: logged,
+      };
+      res.render("task/task-details.hbs", data);
     })
     .catch((error) => {
       console.log("Error while retrieving the task details: ", error);
@@ -32,10 +32,9 @@ router.get("/details/:taskId", (req, res, next) => {
 router.get("/create", isLoggedIn, (req, res, next) => {
   User.find()
     .then((usersFromDB) => {
-
-      let logged = false 
-      if(req.session.currentUser){
-        logged = true
+      let logged = false;
+      if (req.session.currentUser) {
+        logged = true;
       }
       const data = {
         logged: logged,
@@ -68,19 +67,61 @@ router.post("/create", isLoggedIn, (req, res, next) => {
 router.get("/edit/:taskId", isLoggedIn, async (req, res, next) => {
   const { taskId } = req.params;
 
+  const priorityArr = Task.schema.path("priority").options.enum;
+  const categoryArr = Task.schema.path("category").options.enum;
+  const stateArr = Task.schema.path("state").options.enum;
+
   try {
-    const taskDetails = await Task.findById(taskId);
+    const taskDetails = await Task.findById(taskId).populate("responsible");
     const responsible = await User.find();
 
-    let logged = false 
-      if(req.session.currentUser){
-        logged = true
+    const selectedPriority = priorityArr.map((element) => {
+      if (element === taskDetails.priority) {
+        return { priority: element, select: true };
+      } else {
+        return { priority: element, select: false };
       }
+    });
+
+    const selectedCategory = categoryArr.map((element) => {
+      if (element === taskDetails.category) {
+        return { category: element, select: true };
+      } else {
+        return { category: element, select: false };
+      }
+    });
+
+    const selectedState = stateArr.map((element) => {
+      if (element === taskDetails.state) {
+        return { state: element, select: true };
+      } else {
+        return { state: element, select: false };
+      }
+    });
+
+    const selectedResp = responsible.map((element) => {
+      if (element.username === taskDetails.responsible.username) {
+        return { responsible: element, select: true };
+      } else {
+        return { responsible: element, select: false };
+      }
+    });
+
+    console.log(selectedResp);
+
+    let logged = false;
+    if (req.session.currentUser) {
+      logged = true;
+    }
 
     const data = {
       task: taskDetails,
-      responsible: responsible,
-      logged: logged,
+      responsible,
+      logged,
+      selectedPriority,
+      selectedCategory,
+      selectedState,
+      selectedResp,
     };
 
     res.render("task/task-edit.hbs", data);
