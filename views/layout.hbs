@@ -7,9 +7,16 @@
     <title>Foc/us.</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="shortcut icon" href="/images/focus.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geologica:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config = { theme: { extend: { colors: { clifford: '#da373d', } }
+      tailwind.config = { theme: { extend: { colors: { clifford: '#da373d', }
+      fontFamily: {geologica: ['"Geologica"', ...defaultTheme.fontFamily.sans]}
       } }
     </script>
 

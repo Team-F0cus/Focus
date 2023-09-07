@@ -1,60 +1,100 @@
-<h1>Edit the task: {{task.title}} </h1>
+<div
+  id="task-form"
+  class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0"
+>
+  <div
+    class="w-full lg:w-1/2 bg-white rounded-lg shadow sm:max-w-md md:max-w-xl lg:max-w-2xl md:mt-28"
+  >
+    <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+      <h1
+        class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl"
+      >Edit the task: {{task.title}}</h1>
 
-<form action="/task/edit/{{task._id}}" method="post">
-  <label>
-    Title of the task:
-    <input type="text" name="title" value="{{task.title}}" />
-  </label>
+      <form action="/task/edit/{{task._id}}" method="post">
+        <label>
+          Title of the task:
+          <input
+            type="text"
+            name="title"
+            placeholder="Your task"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-3"
+            value="{{task.title}}"
+          />
+        </label>
 
-  <label>
-    Initial state:
-    <select name="state">
-      <option value="Todo">Select</option>
-      <option value="Todo">Todo</option>
-      <option value="In Progress">In Progress</option>
-      <option value="Done">Done</option>
-    </select>
-  </label>
+        <label>
+          Initial state:
+          <select
+            name="state"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-3"
+          >
+            <option value="Todo">Select</option>
+            <option value="Todo">Todo</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Done">Done</option>
+          </select>
+        </label>
 
-  <label>
-    Responsible:
-    <select name="responsible">
-      {{#each responsible}}
-        <option value={{this._id}}>{{this.username}}</option>
-      {{/each}}
-    </select>
-  </label>
+        <label>
+          Responsible:
+          <select
+            name="responsible"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-3"
+          >
+            {{#each responsible}}
+              <option value={{this._id}}>{{this.username}}</option>
+            {{/each}}
+          </select>
+        </label>
 
-  <label>
-    Category:
-    <select name="category">
-      <option value="Improvement"></option>
-      <option value="Bug">Bug</option>
-      <option value="Improvement">Improvement</option>
-      <option value="Feature">Feature</option>
-    </select>
-  </label>
+        <label>
+          Category:
+          <select
+            name="category"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-3"
+          >
+            <option value="Improvement"></option>
+            <option value="Bug">Bug</option>
+            <option value="Improvement">Improvement</option>
+            <option value="Feature">Feature</option>
+          </select>
+        </label>
 
-  <label>
-    Priority:
-    <select name="priority">
-      <option value="Medium"></option>
-      <option value="Low">Low</option>
-      <option value="Medium">Medium</option>
-      <option value="High">High</option>
-    </select>
-  </label>
+        <label class="sr-only">
+          Priority:
+          <select
+            name="priority"
+            id="underline_select"
+            class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer mb-3"
+          >
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </label>
 
-  <label>
-    Description:
-    <textarea
-      name="description"
-      cols="30"
-      rows="2"
-      value="{{task.description}}"
-    >{{task.description}}</textarea>
-  </label>
+        <label>
+          Description:
+          <textarea
+            name="description"
+            cols="30"
+            rows="2"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-5"
+            value="{{task.description}}"
+          >{{task.description}}</textarea>
+        </label>
 
-  <button>Save changes</button>
+        <div class="w-full flex items-center justify-center">
+          <button
+            type="submit"
+            class="w-1/2 md:w-1/4 place-content-center text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+          >Update</button>
+        </div>
+        {{#if errorMessage}}
+          <p class="error">{{errorMessage}}</p>
+        {{/if}}
+      </form>
 
-</form>
+    </div>
+  </div>
+</div>
