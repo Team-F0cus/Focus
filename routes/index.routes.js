@@ -17,14 +17,20 @@ router.get("/", async (req, res, next) => {
     const doneTasks = await Task.find({ state: "Done" }).populate(
       "responsible"
     );
-
+    let logged = false 
+      if(req.session.currentUser){
+        logged = true
+      }
+  
+    
+  
     const data = {
       todoTasks: todoTasks,
       inProgressTasks: inProgressTasks,
       doneTasks: doneTasks,
+      logged : logged,
     };
 
-    console.log(data.doneTasks);
 
     res.render("index", data);
   } catch (error) {

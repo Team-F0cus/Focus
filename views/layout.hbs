@@ -21,11 +21,12 @@
     </script>
 
   </head>
-
+  {{#if logged}}
   <body class="bg-gray-50 relative pb-20">
     <nav
       class="flex items-center justify-center lg:justify-between flex-wrap bg-emerald-800 p-6 md:px-20"
     >
+    <a href="/">
       <div class="flex items-center flex-shrink-0 text-white mr-6">
         <img
           class="fill-current h-8 w-8 mr-2"
@@ -36,6 +37,50 @@
         />
         <span class="font-semibold text-2xl tracking-tight">foc/us.</span>
       </div>
+    </a>
+      <div
+        class="w-full block flex-grow flex flex-col items-center lg:flex-row lg:items-center lg:w-auto"
+      >
+        <div class="text-sm lg:flex-grow flex flex-row">
+          <a
+            href="/"
+            class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white mr-4"
+          >
+            Tasks
+          </a>
+          <a
+            href="/auth/logout"
+            class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white"
+          >
+            Logout
+          </a>
+        </div>
+        <div>
+          <a
+            href="/task/create"
+            class="inline-block text-sm px-4 py-2 leading-none font-medium border rounded bg-white text-emerald-800 border-transparent hover:border-white hover:text-white hover:bg-transparent mt-4 lg:mt-0"
+          >New Task</a>
+        </div>
+      </div>
+    </nav>
+
+   
+    {{else}}
+    <body class="bg-gray-50 relative pb-20">
+    <nav
+      class="flex items-center justify-center lg:justify-between flex-wrap bg-emerald-800 p-6 md:px-20"
+    >
+      <a href="/"><div class="flex items-center flex-shrink-0 text-white mr-6">
+        <img
+          class="fill-current h-8 w-8 mr-2"
+          width="54"
+          height="54"
+          viewBox="0 0 54 54"
+          src="/images/focus.png"
+        />
+        <span class="font-semibold text-2xl tracking-tight">foc/us.</span>
+      </div>
+      </a>
 
       <div
         class="w-full block flex-grow flex flex-col items-center lg:flex-row lg:items-center lg:w-auto"
@@ -59,12 +104,6 @@
           >
             Register
           </a>
-          <a
-            href="/auth/logout"
-            class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white"
-          >
-            Logout
-          </a>
         </div>
         <div>
           <a
@@ -74,7 +113,7 @@
         </div>
       </div>
     </nav>
-
+    {{/if}}
     {{{body}}}
 
     <div

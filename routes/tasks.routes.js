@@ -11,7 +11,17 @@ router.get("/details/:taskId", (req, res, next) => {
 
   Task.findById(taskId)
     .populate("responsible")
-    .then((theTask) => res.render("task/task-details.hbs", { task: theTask }))
+    .then((theTask)=>{
+      let logged = false 
+      if(req.session.currentUser){
+        logged = true
+      }
+      const data = {
+        task: theTask,
+        logged: logged
+      }
+      res.render("task/task-details.hbs",data)
+    })
     .catch((error) => {
       console.log("Error while retrieving the task details: ", error);
       next(error);
@@ -22,7 +32,13 @@ router.get("/details/:taskId", (req, res, next) => {
 router.get("/create", isLoggedIn, (req, res, next) => {
   User.find()
     .then((usersFromDB) => {
+
+      let logged = false 
+      if(req.session.currentUser){
+        logged = true
+      }
       const data = {
+        logged: logged,
         users: usersFromDB,
       };
       res.render("task/task-create", data);
@@ -56,9 +72,15 @@ router.get("/edit/:taskId", isLoggedIn, async (req, res, next) => {
     const taskDetails = await Task.findById(taskId);
     const responsible = await User.find();
 
+    let logged = false 
+      if(req.session.currentUser){
+        logged = true
+      }
+
     const data = {
       task: taskDetails,
       responsible: responsible,
+      logged: logged,
     };
 
     res.render("task/task-edit.hbs", data);
