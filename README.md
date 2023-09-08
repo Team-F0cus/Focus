@@ -15,6 +15,12 @@
 - The app had to be responsive and produced in less than a week
 - Only Javascript with Express, Node.js, Handlebar, MongoDB and Tailwind CSS
 
+### c) Instructions to run this app in your computer
+
+- Install the dependencies with `npm install`
+- Create an `.env` file and add those environment variables : PORT=3000 SESSION_SECRET='a string'
+- Run the app with `npm run dev`
+
 ### c) The app concept
 
 The app is heavily inspired by Trello, the classic Kanban app.
